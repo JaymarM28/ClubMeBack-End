@@ -9,9 +9,8 @@ namespace Clases
 {
     public class Establishment
     {
-        public string EstablishmentCode { get; set; } = string.Empty;
 
-        public int EstablishmentId;
+        public int EstablishmentId { get; set; }
 
         public string Name { get; set; } = string.Empty;
 
