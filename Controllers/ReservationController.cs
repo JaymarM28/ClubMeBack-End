@@ -23,7 +23,7 @@ namespace ClubMeBack_End.Controllers
             int result = 0;
             try
             {
-                var _context = new Logica.Reservation(CurrentConnection);
+                var _context = new Logica.ReservationLogic(CurrentConnection);
                 // Assuming you have a method to create a reservation in your data layer
                 result = _context.CreateReservation(UserId, TableId, EstablishmentId, ReservationDate, ReservationTime, PartySize, SpecialRequests);
 
