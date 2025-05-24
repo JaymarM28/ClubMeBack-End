@@ -11,7 +11,7 @@ namespace Data
 
         }
 
-        public int sp_CreateEstablishment(string IDEstablecimiento, string NombreEstablecimiento, string DireccionEstablecimiento, string CelularEstablecimiento, string EmailEstablecimiento, 
+        public int sp_CreateEstablishment(int IDEstablecimiento, string NombreEstablecimiento, string DireccionEstablecimiento, string CelularEstablecimiento, string EmailEstablecimiento, 
             string DescripcionEstablecimiento, string OppeningHoursEstablecimiento, bool Activo)
         {
             int _ID = 0;

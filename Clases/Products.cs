@@ -14,7 +14,7 @@ namespace Clases
 
         public Establishment establishment { get; set; }
 
-        public int Establishment { get; set; }
+        public int EstablishmentId { get; set; }
 
         public int CategoryId { get; set; }
 

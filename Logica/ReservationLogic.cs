@@ -4,9 +4,9 @@ using System.Data;
 
 namespace Logica
 {
-    public class Reservation : dbContext
+    public class ReservationLogic : dbContext
     {
-        public Reservation(IDbConnection connection) : base(connection)
+        public ReservationLogic(IDbConnection connection) : base(connection)
         {
 
         }

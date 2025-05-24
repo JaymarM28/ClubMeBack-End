@@ -1,4 +1,5 @@
-﻿using StoredProcedures;
+﻿using Clases;
+using StoredProcedures;
 using System.Data;
 using Dapper;
 
@@ -11,32 +12,31 @@ namespace Data
 
         }
 
-        public int sp_CreateEstablishment(string IDEstablecimiento, string NombreEstablecimiento, string DireccionEstablecimiento, string CelularEstablecimiento, string EmailEstablecimiento,
-            string DescripcionEstablecimiento, string OppeningHoursEstablecimiento, bool Activo)
+        public int sp_CreateProducts(int ProductId, int EstablishmentId, int CategoryId, string Productname, string Description,
+            decimal Price, bool isActive)
         {
             int _ID = 0;
             DynamicParameters parameters = new();
-            parameters.Add("@EstablishmentId", IDEstablecimiento, DbType.Int64);
-            parameters.Add("@Name", NombreEstablecimiento, DbType.String);
-            parameters.Add("@Address", DireccionEstablecimiento, DbType.String);
-            parameters.Add("@Phone", CelularEstablecimiento, DbType.String);
-            parameters.Add("@Email", EmailEstablecimiento, DbType.String);
-            parameters.Add("@Description", DescripcionEstablecimiento, DbType.String);
-            parameters.Add("@OpeningHours", OppeningHoursEstablecimiento, DbType.String);
-            parameters.Add("@isActive", Activo, DbType.Boolean);
+            parameters.Add("@ProductId", ProductId, DbType.Int64);
+            parameters.Add("@EstablishmentId", EstablishmentId, DbType.String);
+            parameters.Add("@CategoryId", CategoryId, DbType.Int64);
+            parameters.Add("@Productname", Productname, DbType.String);
+            parameters.Add("@Description", Description, DbType.String);
+            parameters.Add("@Price", Price, DbType.Decimal);
+            parameters.Add("@isActive", isActive, DbType.Boolean);
 
             parameters.Add("@ReturnValue", DbType.Int32, direction: ParameterDirection.ReturnValue);
 
-            base.CurrentConnection.Execute("sp_CreateEstablishment", parameters, commandType: CommandType.StoredProcedure);
+            base.CurrentConnection.Execute("sp_CreateProducts", parameters, commandType: CommandType.StoredProcedure);
             _ID = parameters.Get<int>("@ReturnValue");
             return _ID;
         }
 
-        public List<Clases.Establishment> sp_GetEstablishment(int IDEstablecimiento)
+        public List<Clases.Products> sp_GetpRoducts(int ProductId)
         {
-            List<Clases.Establishment> establishment = new List<Clases.Establishment>();
+            List<Clases.Products> products = new List<Clases.Products>();
 
-            return establishment;
+            return products;
         }
 
     }

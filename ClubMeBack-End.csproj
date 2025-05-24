@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <Folder Include="Clases\" />
-    <Folder Include="Logica\" />
   </ItemGroup>
 
 </Project>
