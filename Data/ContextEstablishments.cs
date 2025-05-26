@@ -32,11 +32,18 @@ namespace Data
             return _ID;
         }
 
-        public List<Clases.Establishment> sp_GetEstablishment (int IDEstablecimiento)
+        public List<Clases.Establishment> sp_GetEstablishment(int IDEstablecimiento)
         {
-            List<Clases.Establishment> establishment = new List<Clases.Establishment>();
+            DynamicParameters parameters = new();
+            parameters.Add("@IDEstablecimiento", IDEstablecimiento, DbType.Int32);
 
-            return establishment;
+            var result = base.CurrentConnection.Query<Clases.Establishment>(
+                "sp_GetEstablishment",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            ).ToList();
+
+            return result;
         }
 
     }
