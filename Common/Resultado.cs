@@ -20,7 +20,7 @@ namespace ClubMeBack_End.Common
             set { intCantidadPaginas = value; }
         }
 
-        public Error Error
+        public Error? Error
         {
             get { return exException; }
             set { exException = value; }

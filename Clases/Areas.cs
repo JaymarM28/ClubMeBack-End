@@ -18,6 +18,6 @@ namespace Clases
 
         public bool IsActive { get; set; }
 
-        public Establishment Establishment { get; set; }
+        public Establishment? Establishment { get; set; }
     }
 }
