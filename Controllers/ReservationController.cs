@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Data;
+using ClubMeBack_End.Logica;
 
 namespace ClubMeBack_End.Controllers
 {

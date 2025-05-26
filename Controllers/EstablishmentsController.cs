@@ -3,7 +3,6 @@ using Data;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Data;
-using Logica;
 
 namespace ClubMeBack_End.Controllers
 {

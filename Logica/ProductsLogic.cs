@@ -3,7 +3,7 @@ using Data;
 using StoredProcedures;
 using System.Data;
 
-namespace Logica
+namespace ClubMeBack_End.Logica
 {
     public class ProductsLogic : dbContext
     {

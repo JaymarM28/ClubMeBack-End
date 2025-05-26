@@ -4,7 +4,7 @@ using Data;
 using StoredProcedures;
 using System.Data;
 
-namespace Logica
+namespace ClubMeBack_End.Logica
 {
     public class AreasLogic : dbContext
     {
@@ -26,18 +26,18 @@ namespace Logica
             {
                 resultadoAreas.Exitoso = false;
                 resultadoAreas.Error = Errores.LlenarError(ex, string.Format("Se presentó un error en el método {0}. {1}",
-                    ((System.Reflection.MethodInfo)(System.Reflection.MethodInfo.GetCurrentMethod())).Name.ToString(), ex.ToString()));
+                    ((System.Reflection.MethodInfo)System.Reflection.MethodBase.GetCurrentMethod()).Name.ToString(), ex.ToString()));
             }
             return resultadoAreas;
         }
 
-        public ClasesRSV.RSV_Resultado<List<Clases.Areas>> GetAreas(int AreaId)
+        public ClasesRSV.RSV_Resultado<List<Areas>> GetAreas(int AreaId)
         {
             var context = new ContextAreas(CurrentConnection);
             var contextEstablecimiento = new ContextEstablishments(CurrentConnection);
-            List<Clases.Areas> areas = new List<Clases.Areas>();
-            List<Clases.Establishment> establecimientos = new List<Clases.Establishment>();
-            ClasesRSV.RSV_Resultado<List<Clases.Areas>> resultadoAreas = new ClasesRSV.RSV_Resultado<List<Clases.Areas>>();
+            List<Areas> areas = new List<Areas>();
+            List<Establishment> establecimientos = new List<Establishment>();
+            ClasesRSV.RSV_Resultado<List<Areas>> resultadoAreas = new ClasesRSV.RSV_Resultado<List<Areas>>();
 
             try
             {
@@ -56,7 +56,7 @@ namespace Logica
             {
                 resultadoAreas.Exitoso = false;
                 resultadoAreas.Error = Errores.LlenarError(ex, string.Format("Se presentó un error en el método {0}. {1}",
-                    ((System.Reflection.MethodInfo)(System.Reflection.MethodInfo.GetCurrentMethod())).Name.ToString(), ex.ToString()));
+                    ((System.Reflection.MethodInfo)System.Reflection.MethodBase.GetCurrentMethod()).Name.ToString(), ex.ToString()));
             }
             return resultadoAreas;
         }

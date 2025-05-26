@@ -1,10 +1,10 @@
-﻿namespace Logica
+﻿namespace ClubMeBack_End.Logica
 {
     public class Errores
     {
-        public static ClubMeBack_End.Common.Error LlenarError(Exception objException, string strMensajeUsuario)
+        public static Common.Error LlenarError(Exception objException, string strMensajeUsuario)
         {
-            ClubMeBack_End.Common.Error infoError = new ClubMeBack_End.Common.Error();
+            Common.Error infoError = new Common.Error();
             infoError.Mensaje = objException.ToString();
             infoError.TipoError = objException.GetType().Name;
             infoError.Fuente = objException.Source;
@@ -22,9 +22,9 @@
             return infoError;
         }
 
-        public static ClubMeBack_End.Common.Error LlenarError(string MensajeUsuario, string Mensaje, string TipoError, string Fuente, string Pila, string InnerException)
+        public static Common.Error LlenarError(string MensajeUsuario, string Mensaje, string TipoError, string Fuente, string Pila, string InnerException)
         {
-            ClubMeBack_End.Common.Error infoError = new ClubMeBack_End.Common.Error
+            Common.Error infoError = new Common.Error
             {
                 Mensaje = Mensaje,
                 TipoError = TipoError,

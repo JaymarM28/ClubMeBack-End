@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 
-namespace Logica
+namespace ClubMeBack_End.Logica
 {
     public class ReservationLogic : dbContext
     {
@@ -30,16 +30,16 @@ namespace Logica
             {
                 resultadoReserva.Exitoso = false;
                 resultadoReserva.Error = Errores.LlenarError(ex, string.Format("Se presentó un error en el método {0}. {1}",
-                    ((System.Reflection.MethodInfo)(System.Reflection.MethodInfo.GetCurrentMethod())).Name.ToString(), ex.ToString()));
+                    ((System.Reflection.MethodInfo)System.Reflection.MethodBase.GetCurrentMethod()).Name.ToString(), ex.ToString()));
             }
             return resultadoReserva;
         }
 
-        public ClasesRSV.RSV_Resultado<List<Clases.Reservations>> GetReservations(string UserId)
+        public ClasesRSV.RSV_Resultado<List<Reservations>> GetReservations(string UserId)
         {
             var context = new ContextReservation(CurrentConnection);
-            List<Clases.Reservations> reservations = new List<Clases.Reservations>();
-            ClasesRSV.RSV_Resultado<List<Clases.Reservations>> resultadoReserva = new ClasesRSV.RSV_Resultado<List<Clases.Reservations>>();
+            List<Reservations> reservations = new List<Reservations>();
+            ClasesRSV.RSV_Resultado<List<Reservations>> resultadoReserva = new ClasesRSV.RSV_Resultado<List<Reservations>>();
 
             try
             {
@@ -51,7 +51,7 @@ namespace Logica
             {
                 resultadoReserva.Exitoso = false;
                 resultadoReserva.Error = Errores.LlenarError(ex, string.Format("Se presentó un error en el método {0}. {1}",
-                    ((System.Reflection.MethodInfo)(System.Reflection.MethodInfo.GetCurrentMethod())).Name.ToString(), ex.ToString()));
+                    ((System.Reflection.MethodInfo)System.Reflection.MethodBase.GetCurrentMethod()).Name.ToString(), ex.ToString()));
             }
             return resultadoReserva;
         }

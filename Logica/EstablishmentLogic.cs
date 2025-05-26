@@ -5,7 +5,7 @@ using StoredProcedures;
 using System.Collections.Generic;
 using System.Data;
 
-namespace Logica
+namespace ClubMeBack_End.Logica
 {
     public class EstablishmentLogic : dbContext
     {
@@ -29,16 +29,16 @@ namespace Logica
             {
                 resultadoEstablecimiento.Exitoso = false;
                 resultadoEstablecimiento.Error = Errores.LlenarError(ex, string.Format("Se presentó un error en el método {0}. {1}",
-                    ((System.Reflection.MethodInfo)(System.Reflection.MethodInfo.GetCurrentMethod())).Name.ToString(), ex.ToString()));
+                    ((System.Reflection.MethodInfo)System.Reflection.MethodBase.GetCurrentMethod()).Name.ToString(), ex.ToString()));
             }
             return resultadoEstablecimiento;
         }
 
-        public ClasesRSV.RSV_Resultado<List<Clases.Establishment>> GetEstablishment(int IDEstablecimiento)
+        public ClasesRSV.RSV_Resultado<List<Establishment>> GetEstablishment(int IDEstablecimiento)
         {
             var context = new ContextEstablishments(CurrentConnection);
-            List<Clases.Establishment> establishment = new List<Clases.Establishment>();
-            ClasesRSV.RSV_Resultado<List<Clases.Establishment>> resultadoEstablecimiento = new ClasesRSV.RSV_Resultado<List<Clases.Establishment>>();
+            List<Establishment> establishment = new List<Establishment>();
+            ClasesRSV.RSV_Resultado<List<Establishment>> resultadoEstablecimiento = new ClasesRSV.RSV_Resultado<List<Establishment>>();
 
             try
             {
@@ -50,7 +50,7 @@ namespace Logica
             {
                 resultadoEstablecimiento.Exitoso = false;
                 resultadoEstablecimiento.Error = Errores.LlenarError(ex, string.Format("Se presentó un error en el método {0}. {1}",
-                    ((System.Reflection.MethodInfo)(System.Reflection.MethodInfo.GetCurrentMethod())).Name.ToString(), ex.ToString()));
+                    ((System.Reflection.MethodInfo)System.Reflection.MethodBase.GetCurrentMethod()).Name.ToString(), ex.ToString()));
             }
             return resultadoEstablecimiento;
         }
