@@ -33,5 +33,18 @@ namespace Data
             return _ID;
         }
 
+        public List<Clases.Reservations> sp_GetReservations(int UserId)
+        {
+            DynamicParameters parameters = new();
+            parameters.Add("@UserId", UserId, DbType.Int32);
+
+            var result = base.CurrentConnection.Query<Clases.Reservations>(
+                "sp_GetReservations",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            ).ToList();
+
+            return result;
+        }
     }
 }

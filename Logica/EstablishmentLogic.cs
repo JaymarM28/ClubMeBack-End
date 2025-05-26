@@ -13,13 +13,27 @@ namespace Logica
         {
         }
 
-        public int CreateEstablishment(int IDEstablecimiento, string NombreEstablecimiento, string DireccionEstablecimiento, string CelularEstablecimiento, string EmailEstablecimiento,
+        public ClasesRSV.RSV_ResultadoEjecucion CreateEstablishment(int IDEstablecimiento, string NombreEstablecimiento, string DireccionEstablecimiento, string CelularEstablecimiento, string EmailEstablecimiento,
             string DescripcionEstablecimiento, string OppeningHoursEstablecimiento, bool Activo)
         {
+            ClasesRSV.RSV_ResultadoEjecucion resultadoEstablecimiento = new ClasesRSV.RSV_ResultadoEjecucion();
             var context = new ContextEstablishments(CurrentConnection);
-            return context.sp_CreateEstablishment(IDEstablecimiento, NombreEstablecimiento, DireccionEstablecimiento, CelularEstablecimiento, EmailEstablecimiento,
+
+            try
+            {
+                resultadoEstablecimiento.IDRegistro = context.sp_CreateEstablishment(IDEstablecimiento, NombreEstablecimiento, DireccionEstablecimiento, CelularEstablecimiento, EmailEstablecimiento,
                 DescripcionEstablecimiento, OppeningHoursEstablecimiento, Activo);
+                resultadoEstablecimiento.Exitoso = true;
+            }
+            catch (Exception ex)
+            {
+                resultadoEstablecimiento.Exitoso = false;
+                resultadoEstablecimiento.Error = Errores.LlenarError(ex, string.Format("Se presentó un error en el método {0}. {1}",
+                    ((System.Reflection.MethodInfo)(System.Reflection.MethodInfo.GetCurrentMethod())).Name.ToString(), ex.ToString()));
+            }
+            return resultadoEstablecimiento;
         }
+
         public ClasesRSV.RSV_Resultado<List<Clases.Establishment>> GetEstablishment(int IDEstablecimiento)
         {
             var context = new ContextEstablishments(CurrentConnection);
@@ -40,5 +54,6 @@ namespace Logica
             }
             return resultadoEstablecimiento;
         }
+
     }
 }

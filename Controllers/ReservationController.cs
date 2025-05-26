@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ClubMeBack_End.Common;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Data;
 
 namespace ClubMeBack_End.Controllers
@@ -18,23 +20,30 @@ namespace ClubMeBack_End.Controllers
         }
 
         [HttpPost("CreateReservation")]
-        public int CreateReservation(string UserId, int TableId, int EstablishmentId, DateTime ReservationDate, DateTime ReservationTime, int PartySize, string SpecialRequests)
+        public ClasesRSV.RSV_ResultadoEjecucion CreateReservation(string UserId, int TableId, int EstablishmentId, DateTime ReservationDate, DateTime ReservationTime, int PartySize, string SpecialRequests)
         {
-            int result = 0;
-            try
             {
                 var _context = new Logica.ReservationLogic(CurrentConnection);
-                // Assuming you have a method to create a reservation in your data layer
-                result = _context.CreateReservation(UserId, TableId, EstablishmentId, ReservationDate, ReservationTime, PartySize, SpecialRequests);
+                ClasesRSV.RSV_ResultadoEjecucion resultadoReserva = new ClasesRSV.RSV_ResultadoEjecucion();
 
+                resultadoReserva = _context.CreateReservation(UserId, TableId, EstablishmentId, ReservationDate, ReservationTime, PartySize, SpecialRequests);
+
+                return resultadoReserva;
             }
-            catch (Exception ex)
-            {
-                ex.Message.ToString();
-            }
-            return result;
 
         }
 
+        [HttpGet("GetReservations")]
+        public ClasesRSV.RSV_Resultado<List<Clases.Reservations>> GetReservations(int UserId)
+        {
+
+            var _context = new Logica.ReservationLogic(CurrentConnection);
+            ClasesRSV.RSV_Resultado<List<Clases.Reservations>> resultadoReserva = new ClasesRSV.RSV_Resultado<List<Clases.Reservations>>();
+            List<Clases.Reservations> reservations = new List<Clases.Reservations>();
+
+            resultadoReserva = _context.GetReservations(UserId);
+
+            return resultadoReserva;
+        }
     }
 }

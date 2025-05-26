@@ -23,15 +23,15 @@ namespace ClubMeBack_End.Controllers
 
 
         [HttpPost("CreateEstablishment")]
-        public int CreateEstablishment(int IDEstablecimiento, string NombreEstablecimiento, string DireccionEstablecimiento, string CelularEstablecimiento, string EmailEstablecimiento,
+        public ClasesRSV.RSV_ResultadoEjecucion CreateEstablishment(int IDEstablecimiento, string NombreEstablecimiento, string DireccionEstablecimiento, string CelularEstablecimiento, string EmailEstablecimiento,
             string DescripcionEstablecimiento, string OppeningHoursEstablecimiento, bool Activo)
         {
-            var _context = new Data.ContextEstablishments(CurrentConnection);
+            var _context = new Logica.EstablishmentLogic(CurrentConnection);
+            ClasesRSV.RSV_ResultadoEjecucion resultadoEstablecimient = new ClasesRSV.RSV_ResultadoEjecucion();
 
-            // Assuming you have a method to create an establishment in your data layer
-            int result = _context.sp_CreateEstablishment(IDEstablecimiento, NombreEstablecimiento, DireccionEstablecimiento, CelularEstablecimiento, EmailEstablecimiento, DescripcionEstablecimiento, OppeningHoursEstablecimiento, Activo);
+            resultadoEstablecimient = _context.CreateEstablishment(IDEstablecimiento, NombreEstablecimiento, DireccionEstablecimiento, CelularEstablecimiento, EmailEstablecimiento, DescripcionEstablecimiento, OppeningHoursEstablecimiento, Activo);
 
-            return result;
+            return resultadoEstablecimient;
         }
 
         [HttpGet("GetEstablishment")]
