@@ -34,7 +34,7 @@ namespace ClubMeBack_End.Controllers
         }
 
         [HttpGet("GetReservations")]
-        public ClasesRSV.RSV_Resultado<List<Clases.Reservations>> GetReservations(int UserId)
+        public ClasesRSV.RSV_Resultado<List<Clases.Reservations>> GetReservations(string UserId)
         {
 
             var _context = new Logica.ReservationLogic(CurrentConnection);

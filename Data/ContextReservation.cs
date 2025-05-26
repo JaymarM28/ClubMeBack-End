@@ -33,7 +33,7 @@ namespace Data
             return _ID;
         }
 
-        public List<Clases.Reservations> sp_GetReservations(int UserId)
+        public List<Clases.Reservations> sp_GetReservations(string UserId)
         {
             DynamicParameters parameters = new();
             parameters.Add("@UserId", UserId, DbType.Int32);

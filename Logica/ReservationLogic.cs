@@ -35,7 +35,7 @@ namespace Logica
             return resultadoReserva;
         }
 
-        public ClasesRSV.RSV_Resultado<List<Clases.Reservations>> GetReservations(int UserId)
+        public ClasesRSV.RSV_Resultado<List<Clases.Reservations>> GetReservations(string UserId)
         {
             var context = new ContextReservation(CurrentConnection);
             List<Clases.Reservations> reservations = new List<Clases.Reservations>();

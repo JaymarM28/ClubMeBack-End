@@ -27,11 +27,18 @@ namespace Data
             return _ID;
         }
 
-        public List<Clases.Areas> sp_GetpRoducts(int AreaId)
+        public List<Clases.Areas> sp_GetAreas(int AreaId)
         {
-            List<Clases.Areas> areas = new List<Clases.Areas>();
+            DynamicParameters parameters = new();
+            parameters.Add("@AreaId", AreaId, DbType.Int32);
 
-            return areas;
+            var result = base.CurrentConnection.Query<Clases.Areas>(
+                "sp_GetAreas",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            ).ToList();
+
+            return result;
         }
 
     }
