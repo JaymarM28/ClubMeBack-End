@@ -33,13 +33,29 @@ namespace Data
             return _ID;
         }
 
-        public List<Clases.Reservations> sp_GetReservations(string UserId)
+        public List<Clases.Reservations> sp_GetReservationsByUser(string UserId)
         {
             DynamicParameters parameters = new();
             parameters.Add("@UserId", UserId, DbType.Int32);
 
             var result = base.CurrentConnection.Query<Clases.Reservations>(
-                "sp_GetReservations",
+                "sp_GetReservationsByUser",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            ).ToList();
+
+            return result;
+        }
+
+        public List<Clases.Reservations> sp_GetReservationsByEstablishment(int EstablishmentId, DateTime ReservationDate, int StatusId)
+        {
+            DynamicParameters parameters = new();
+            parameters.Add("@EstablishmentId", EstablishmentId, DbType.Int32);
+            parameters.Add("@ReservationDate", ReservationDate, DbType.DateTime);
+            parameters.Add("@StatusId", StatusId, DbType.Int32);
+
+            var result = base.CurrentConnection.Query<Clases.Reservations>(
+                "sp_GetReservationsByEstablishment",
                 parameters,
                 commandType: CommandType.StoredProcedure
             ).ToList();

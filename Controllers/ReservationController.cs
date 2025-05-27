@@ -34,15 +34,28 @@ namespace ClubMeBack_End.Controllers
 
         }
 
-        [HttpGet("GetReservations")]
-        public ClasesRSV.RSV_Resultado<List<Clases.Reservations>> GetReservations(string UserId)
+        [HttpGet("GetReservationsByUser")]
+        public ClasesRSV.RSV_Resultado<List<Clases.Reservations>> GetReservationsByUser(string UserId)
         {
 
             var _context = new Logica.ReservationLogic(CurrentConnection);
             ClasesRSV.RSV_Resultado<List<Clases.Reservations>> resultadoReserva = new ClasesRSV.RSV_Resultado<List<Clases.Reservations>>();
             List<Clases.Reservations> reservations = new List<Clases.Reservations>();
 
-            resultadoReserva = _context.GetReservations(UserId);
+            resultadoReserva = _context.GetReservationsByUser(UserId);
+
+            return resultadoReserva;
+        }
+
+        [HttpGet("GetReservationsByEstablishment")]
+        public ClasesRSV.RSV_Resultado<List<Clases.Reservations>> GetReservationsByEstablishment(int EstablishmentId, DateTime ReservationDate, int StatusId)
+        {
+
+            var _context = new Logica.ReservationLogic(CurrentConnection);
+            ClasesRSV.RSV_Resultado<List<Clases.Reservations>> resultadoReserva = new ClasesRSV.RSV_Resultado<List<Clases.Reservations>>();
+            List<Clases.Reservations> reservations = new List<Clases.Reservations>();
+
+            resultadoReserva = _context.GetReservationsByEstablishment(EstablishmentId, ReservationDate, StatusId);
 
             return resultadoReserva;
         }
