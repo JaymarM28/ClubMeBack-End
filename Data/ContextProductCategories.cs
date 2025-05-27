@@ -27,7 +27,7 @@ namespace ClubMeBack_End.Data
             return _ID;
         }
 
-        public List<Clases.ProductCategories> sp_GetProductCategories(int CategoryId, string CategoryName)
+        public List<Clases.ProductCategories> sp_GetProductCategories(int CategoryId, string? CategoryName)
         {
             DynamicParameters parameters = new();
             parameters.Add("@CategoryId", CategoryId, DbType.Int64);

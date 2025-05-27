@@ -2,7 +2,7 @@
 using System.Data;
 using Dapper;
 
-namespace Data
+namespace ClubMeBack_End.Data
 {
     public class ContextEstablishments : dbContext
     {
@@ -27,7 +27,7 @@ namespace Data
 
             parameters.Add("@ReturnValue", DbType.Int32, direction: ParameterDirection.ReturnValue);
 
-            base.CurrentConnection.Execute("sp_CreateEstablishment", parameters, commandType: CommandType.StoredProcedure);
+            CurrentConnection.Execute("sp_CreateEstablishment", parameters, commandType: CommandType.StoredProcedure);
             _ID = parameters.Get<int>("@ReturnValue");
             return _ID;
         }
@@ -37,7 +37,7 @@ namespace Data
             DynamicParameters parameters = new();
             parameters.Add("@IDEstablecimiento", IDEstablecimiento, DbType.Int32);
 
-            var result = base.CurrentConnection.Query<Clases.Establishment>(
+            var result = CurrentConnection.Query<Clases.Establishment>(
                 "sp_GetEstablishment",
                 parameters,
                 commandType: CommandType.StoredProcedure

@@ -34,17 +34,17 @@ namespace ClubMeBack_End.Controllers
 
         }
 
-        //[HttpGet("GetAreas")]
-        //public ClasesRSV.RSV_Resultado<List<Clases.Areas>> GetAreas(int AreaId)
-        //{
+        [HttpGet("GetAreas")]
+        public ClasesRSV.RSV_Resultado<List<Clases.Areas>> GetAreas(int AreaId)
+        {
 
-        //    var _context = new Logica.AreasLogic(CurrentConnection);
-        //    ClasesRSV.RSV_Resultado<List<Clases.Areas>> resultadoAreas = new ClasesRSV.RSV_Resultado<List<Clases.Areas>>();
-        //    List<Clases.Areas> areas = new List<Clases.Areas>();
+            var _context = new Logica.AreasLogic(CurrentConnection);
+            ClasesRSV.RSV_Resultado<List<Clases.Areas>> resultadoAreas = new ClasesRSV.RSV_Resultado<List<Clases.Areas>>();
+            List<Clases.Areas> areas = new List<Clases.Areas>();
 
-        //    resultadoAreas = _context.GetAreas(AreaId);
+            resultadoAreas = _context.GetAreas(AreaId);
 
-        //    return resultadoAreas;
-        //}
+            return resultadoAreas;
+        }
     }
 }

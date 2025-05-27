@@ -33,7 +33,7 @@ namespace ClubMeBack_End.Logica
             return resultadoProductCategories;
         }
 
-        public ClasesRSV.RSV_Resultado<List<ProductCategories>> GetProductCategories(int IDEstablecimiento, string CategoryName)
+        public ClasesRSV.RSV_Resultado<List<ProductCategories>> GetProductCategories(int IDEstablecimiento, string? CategoryName)
         {
             var context = new ContextProductCategories(CurrentConnection);
             List<ProductCategories> productcategories = new List<ProductCategories>();

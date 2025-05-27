@@ -32,7 +32,7 @@ namespace Data
             return _ID;
         }
 
-        public List<Clases.Products> sp_GetpRoducts(int ProductId)
+        public List<Clases.Products> sp_GetProducts(int ProductId)
         {
             List<Clases.Products> products = new List<Clases.Products>();
 

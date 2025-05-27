@@ -32,7 +32,7 @@ namespace ClubMeBack_End.Controllers
         }
 
         [HttpGet("GetProductCategories")]
-        public ClasesRSV.RSV_Resultado<List<Clases.ProductCategories>> GetProductCategories(int CategoryId, string CategoryName)
+        public ClasesRSV.RSV_Resultado<List<Clases.ProductCategories>> GetProductCategories(int CategoryId, string? CategoryName)
         {
 
             var _context = new Logica.ProductCategoriesLogic(CurrentConnection);
