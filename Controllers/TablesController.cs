@@ -35,17 +35,17 @@ namespace ClubMeBack_End.Controllers
 
         }
 
-        //[HttpGet("GetTables")]
-        //public ClasesRSV.RSV_Resultado<List<Clases.Tables>> GetTables(int TableId)
-        //{
+        [HttpGet("GetAvailableTables")]
+        public ClasesRSV.RSV_Resultado<List<Clases.Tables>> GetAvailableTables(int EstablishmentId, DateTime ReservationDate, TimeOnly ReservationTime, int PartySize)
+        {
 
-        //    var _context = new Logica.TablesLogic(CurrentConnection);
-        //    ClasesRSV.RSV_Resultado<List<Clases.Tables>> resultadoTables = new ClasesRSV.RSV_Resultado<List<Clases.Tables>>();
-        //    List<Clases.Tables> tables = new List<Clases.Tables>();
+            var _context = new Logica.TablesLogic(CurrentConnection);
+            ClasesRSV.RSV_Resultado<List<Clases.Tables>> resultadoTables = new ClasesRSV.RSV_Resultado<List<Clases.Tables>>();
+            List<Clases.Tables> tables = new List<Clases.Tables>();
 
-        //    resultadoTables = _context.GetTables(TableId);
+            resultadoTables = _context.GetAvailableTables(EstablishmentId, ReservationDate, ReservationTime, PartySize);
 
-        //    return resultadoTables;
-        //}
+            return resultadoTables;
+        }
     }
 }

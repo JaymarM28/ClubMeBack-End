@@ -24,7 +24,7 @@ namespace Clases
 
         public bool IsActive { get; set; }
 
-        public Establishment Establishment { get; set; }
+        public Areas? Areas { get; set; }
 
     }
 }

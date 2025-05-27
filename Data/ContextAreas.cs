@@ -30,7 +30,7 @@ namespace Data
         public List<Clases.Areas> sp_GetAreas(int AreaId)
         {
             DynamicParameters parameters = new();
-            parameters.Add("@AreaId", AreaId, DbType.Int32);
+            parameters.Add("@IDArea", AreaId, DbType.Int32);
 
             var result = base.CurrentConnection.Query<Clases.Areas>(
                 "sp_GetAreas",

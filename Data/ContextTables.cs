@@ -43,5 +43,22 @@ namespace ClubMeBack_End.Data
 
             return result;
         }
+
+        public List<Clases.Tables> sp_GetAvailableTables(int EstablishmentId, DateTime ReservationDate, TimeOnly ReservationTime, int PartySize)
+        {
+            DynamicParameters parameters = new();
+            parameters.Add("@EstablishmentId", EstablishmentId, DbType.Int32);
+            parameters.Add("@ReservationDate", ReservationDate, DbType.Date);
+            parameters.Add("@ReservationTime", ReservationTime, DbType.Time);
+            parameters.Add("@PartySize", PartySize, DbType.Int32);
+
+            var result = base.CurrentConnection.Query<Clases.Tables>(
+                "sp_GetAvailableTables",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            ).ToList();
+
+            return result;
+        }
     }
 }

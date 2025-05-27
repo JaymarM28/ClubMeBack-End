@@ -33,34 +33,34 @@ namespace ClubMeBack_End.Logica
             return resultadoTables;
         }
 
-        //public ClasesRSV.RSV_Resultado<List<Clases.Tables>> GetTables(int TableId)
-        //{
-        //    var context = new ContextTables(CurrentConnection);
-        //    var contextEstablecimiento = new ContextTables(CurrentConnection);
-        //    List<Clases.Tables> tables = new List<Clases.Tables>();
-        //    List<Clases.Establishment> establecimientos = new List<Clases.Establishment>();
-        //    ClasesRSV.RSV_Resultado<List<Clases.Tables>> resultadoTables = new ClasesRSV.RSV_Resultado<List<Clases.Tables>>();
+        public ClasesRSV.RSV_Resultado<List<Clases.Tables>> GetAvailableTables(int EstablishmentId, DateTime ReservationDate, TimeOnly ReservationTime, int PartySize)
+        {
+            var context = new ContextTables(CurrentConnection);
+            var contextAreas = new ContextAreas(CurrentConnection);
+            List<Clases.Tables> tables = new List<Clases.Tables>();
+            List<Clases.Areas> areas = new List<Clases.Areas>();
+            ClasesRSV.RSV_Resultado<List<Clases.Tables>> resultadoTables = new ClasesRSV.RSV_Resultado<List<Clases.Tables>>();
 
-        //    try
-        //    {
-        //        tables = context.sp_GetTables(TableId);
-        //        establecimientos = contextEstablecimiento.sp_GetEstablishment(-1).ToList();
+            try
+            {
+                tables = context.sp_GetAvailableTables(EstablishmentId, ReservationDate, ReservationTime, PartySize);
+                areas = contextAreas.sp_GetAreas(-1);
 
-        //        foreach (var table in tables)
-        //        {
-        //            table.Establishment = establecimientos.Where(t => t.EstablishmentId == table.EstablishmentId).FirstOrDefault();
-        //        }
+                foreach (var table in tables)
+                {
+                    table.Areas = areas.Where(a => a.AreaId == table.AreaId).FirstOrDefault();
+                }
 
-        //        resultadoTables.Exitoso = true;
-        //        resultadoTables.Datos = tables;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        resultadoTables.Exitoso = false;
-        //        resultadoTables.Error = Errores.LlenarError(ex, string.Format("Se presentó un error en el método {0}. {1}",
-        //            ((System.Reflection.MethodInfo)(System.Reflection.MethodInfo.GetCurrentMethod())).Name.ToString(), ex.ToString()));
-        //    }
-        //    return resultadoTables;
-        //}
+                resultadoTables.Exitoso = true;
+                resultadoTables.Datos = tables;
+            }
+            catch (Exception ex)
+            {
+                resultadoTables.Exitoso = false;
+                resultadoTables.Error = Errores.LlenarError(ex, string.Format("Se presentó un error en el método {0}. {1}",
+                    ((System.Reflection.MethodInfo)(System.Reflection.MethodInfo.GetCurrentMethod())).Name.ToString(), ex.ToString()));
+            }
+            return resultadoTables;
+        }
     }
 }
