@@ -4,7 +4,7 @@ using Dapper;
 
 namespace ClubMeBack_End.Data
 {
-    public class ContextProductCategories :dbContext
+    public class ContextProductCategories : dbContext
     {
         public ContextProductCategories(IDbConnection connection) : base(connection)
         {

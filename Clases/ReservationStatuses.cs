@@ -12,5 +12,6 @@ namespace Clases
         public string StatusName { get; set; } = string.Empty;
         public string? Description { get; set; }
         public bool isActive { get; set; }
+        public string? StatusCode { get; set; }
     }
 }
