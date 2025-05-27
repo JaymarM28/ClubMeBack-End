@@ -34,17 +34,17 @@ namespace ClubMeBack_End.Controllers
 
         }
 
-        //[HttpGet("GetSales")]
-        //public ClasesRSV.RSV_Resultado<List<Clases.Sales>> GetSales(int SalesId)
-        //{
+        [HttpGet("GetSales")]
+        public ClasesRSV.RSV_Resultado<List<Clases.Sales>> GetSales(int SalesId)
+        {
 
-        //    var _context = new Logica.SalesLogic(CurrentConnection);
-        //    ClasesRSV.RSV_Resultado<List<Clases.Sales>> resultadoSales = new ClasesRSV.RSV_Resultado<List<Clases.Sales>>();
-        //    List<Clases.Sales> sales = new List<Clases.Sales>();
+            var _context = new Logica.SalesLogic(CurrentConnection);
+            ClasesRSV.RSV_Resultado<List<Clases.Sales>> resultadoSales = new ClasesRSV.RSV_Resultado<List<Clases.Sales>>();
+            List<Clases.Sales> sales = new List<Clases.Sales>();
 
-        //    resultadoSales = _context.GetSales(SalesId);
+            resultadoSales = _context.GetSales(SalesId);
 
-        //    return resultadoSales;
-        //}
+            return resultadoSales;
+        }
     }
 }

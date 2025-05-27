@@ -26,6 +26,6 @@ namespace Clases
 
         public string? Notes { get; set; }
 
-        public SaleDetails SaleDetails { get; set; }
+        public List<SaleDetails> SaleDetails { get; set; }
     }
 }
