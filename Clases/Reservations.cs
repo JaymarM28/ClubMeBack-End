@@ -18,7 +18,7 @@ namespace Clases
 
         public DateTime ReservationDate { get; set; }
 
-        public DateTime ReservationTime { get; set; }
+        public TimeOnly ReservationTime { get; set; }
 
         public int PartySize { get; set; }
 

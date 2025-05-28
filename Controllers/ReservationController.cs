@@ -21,7 +21,7 @@ namespace ClubMeBack_End.Controllers
         }
 
         [HttpPost("CreateReservation")]
-        public ClasesRSV.RSV_ResultadoEjecucion CreateReservation(string UserId, int TableId, int EstablishmentId, DateTime ReservationDate, DateTime ReservationTime, int PartySize, string SpecialRequests)
+        public ClasesRSV.RSV_ResultadoEjecucion CreateReservation(string UserId, int TableId, int EstablishmentId, DateTime ReservationDate, TimeOnly ReservationTime, int PartySize, string SpecialRequests)
         {
             {
                 var _context = new Logica.ReservationLogic(CurrentConnection);

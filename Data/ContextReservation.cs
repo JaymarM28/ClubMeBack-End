@@ -14,7 +14,7 @@ namespace Data
         public ContextReservation(IDbConnection connection) : base(connection)
         {
         }
-        public int sp_CreateReservation(string UserId, int TableId, int EstablishmentId, DateTime ReservationDate, DateTime ReservationTime, int PartySize, string SpecialRequests)
+        public int sp_CreateReservation(string UserId, int TableId, int EstablishmentId, DateTime ReservationDate, TimeOnly ReservationTime, int PartySize, string SpecialRequests)
         {
             int _ID = 0;
             DynamicParameters parameters = new();
@@ -22,7 +22,7 @@ namespace Data
             parameters.Add("@TableId", TableId, DbType.Int64);
             parameters.Add("@EstablishmentId", EstablishmentId, DbType.Int64);
             parameters.Add("@ReservationDate", ReservationDate, DbType.DateTime);
-            parameters.Add("@ReservationTime", ReservationTime, DbType.DateTime);
+            parameters.Add("@ReservationTime", ReservationTime, DbType.Time);
             parameters.Add("@PartySize", PartySize, DbType.Int32);
             parameters.Add("@SpecialRequests", SpecialRequests, DbType.String);
 
