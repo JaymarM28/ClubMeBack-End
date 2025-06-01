@@ -36,7 +36,7 @@ namespace Data
         public List<Clases.Reservations> sp_GetReservationsByUser(string UserId)
         {
             DynamicParameters parameters = new();
-            parameters.Add("@UserId", UserId, DbType.Int32);
+            parameters.Add("@UserId", UserId, DbType.String);
 
             var result = base.CurrentConnection.Query<Clases.Reservations>(
                 "sp_GetReservationsByUser",

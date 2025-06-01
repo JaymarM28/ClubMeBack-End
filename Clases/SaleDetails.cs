@@ -15,5 +15,8 @@ namespace Clases
         public int Quantity { get; set; }
         public decimal Subtotal { get; set; }
 
+        // Propiedades de navegación
+        public Products? Product { get; set; }
+        public Sales? Sale { get; set; }
     }
 }

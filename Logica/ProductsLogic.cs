@@ -50,8 +50,8 @@ namespace ClubMeBack_End.Logica
 
                 foreach (var product in products)
                 {
-                    product.establishment = establecimientos.Where(e => e.EstablishmentId == product.EstablishmentId).FirstOrDefault();
-                    product.productCategories = productcategories.Where(p => p.CategoryId == product.CategoryId).FirstOrDefault();
+                    product.Establishment = establecimientos.Where(e => e.EstablishmentId == product.EstablishmentId).FirstOrDefault();
+                    product.ProductCategories = productcategories.Where(p => p.CategoryId == product.CategoryId).FirstOrDefault();
                 }
 
                 resultadoProducts.Exitoso = true;

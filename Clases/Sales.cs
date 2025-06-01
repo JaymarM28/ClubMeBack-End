@@ -26,6 +26,8 @@ namespace Clases
 
         public string? Notes { get; set; }
 
-        public List<SaleDetails> SaleDetails { get; set; }
+        // Propiedades de navegación
+        public Reservations? Reservation { get; set; }
+        public List<SaleDetails>? SaleDetails { get; set; }
     }
 }
